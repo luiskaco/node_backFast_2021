@@ -5,6 +5,8 @@
 
 ``` git tag -a v.1.0.0 -m "Listo para usar"  ```
 
+git push --tags
+
 ### DEPENDECIAS USADAS
 
 ##### Paqute express
