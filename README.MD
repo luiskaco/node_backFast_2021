@@ -1,5 +1,6 @@
 # NODE INICIAL PARA SERVER HTTP
 
+git checkout --.
 
 ### DEPENDECIAS USADAS
 
