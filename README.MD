@@ -3,6 +3,8 @@
 ##### Utilidades Git
 ```git checkout --.```
 
+``` git tag -a v.1.0.0 -m "Listo para usar"  ```
+
 ### DEPENDECIAS USADAS
 
 ##### Paqute express
