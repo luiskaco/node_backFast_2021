@@ -1,6 +1,7 @@
-# NODE INICIAL PARA SERVER HTTP
+# NODE INICIAL PARA SERVER CON EXPRESS
 
-git checkout --.
+##### Utilidades Git
+```git checkout --.```
 
 ### DEPENDECIAS USADAS
 
@@ -17,3 +18,6 @@ git checkout --.
 `- npm  i cors -`
 
 https://www.npmjs.com/package/corsa
+
+
+Nota: recuerda que debes escribir `- npm  i cors -` para reconstruir los modulos de node.
