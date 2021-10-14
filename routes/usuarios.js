@@ -18,7 +18,7 @@ const { usuarioGet,
 // importamos la funcion router de express
 const router = Router();
 
-         // Ejmplo 
+            // Ejmplo 
             // Definimos ls rutas
             // router.get('/',  (req, res) => {
             //     res.status(403).json({
