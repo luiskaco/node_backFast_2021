@@ -2,7 +2,8 @@
 const express = require('express')
 
 // importando cors
-const cors = require('cors')
+const cors = require('cors');
+const { dbCnnnection } = require('../database/config.db');
 
 // Creando clase de server
 class Server {
@@ -16,11 +17,22 @@ class Server {
         // mapa de ruta
         this.usuariosPath = '/api/usuarios';
 
+        // Conectar a BD
+        this.conectarDB();
+
+
              // middleware
             this.middlewares();
 
         this.route();
 
+    }
+
+    async conectarDB() {
+        await dbCnnnection()
+        /*
+          Nota: Podemos realizar diferentes llamado de db aqui
+        **/
     }
 
     // Nota: los midleware pueden ser ubicado en la ruta o como funcion
