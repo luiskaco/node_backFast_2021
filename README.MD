@@ -7,6 +7,9 @@
 
 git push --tags
 
+
+gti branch  - Revisando rama
+
 ### DEPENDECIAS USADAS
 
 ##### Paqute express
@@ -42,5 +45,14 @@ https://mongoosejs.com/docs/index.html
 ##### express-validator - Paquete para las validaciones de rutas
 
 `- npm i express-validator -`
+
+
+### HEROKU COMAND
+
+heroku --version
+
+git push heroku main
+
+
 
 
