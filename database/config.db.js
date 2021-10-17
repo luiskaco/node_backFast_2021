@@ -9,6 +9,8 @@ const dbCnnnection = async () => {
             useNewUrlParser: true, 
             useUnifiedTopology: true, 
           //  useFindAndModify: false,   // Recomienda para usar ciertas funciones pasadas
+
+          
        })
 
        console.log("base de datos online")

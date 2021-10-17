@@ -7,13 +7,17 @@ const {check} = require('express-validator')
 // importamos middleware personalizado
 const {validarCampos} = require('../midlewares/validar-campos');
 
+    // Importando validaciones personalizadas
+    const {esRolvalido, emailExiste, existeUsuarioporID} = require('../helpers/db-validators');
+
+
 // importando controllador
 const { usuarioGet,
         usuarioPost,
         usuarioPut,
         usuarioPath,
         usuarioDelete} 
-    = require('../controllers/usuarioControllers')
+    = require('../controllers/usuarioControllers');
 
 // importamos la funcion router de express
 const router = Router();
@@ -38,19 +42,49 @@ const router = Router();
             check('password', 'El password debe de contener mas de seis(6) letras').isLength({min:6}),
             check('password', 'El password es obligatorio').not().isEmpty(),
             check('correo', 'El correo no es valido').isEmail(),
+            check('correo').custom((correo) => emailExiste(correo)),
             check('role', 'No puede quedar vacio').not().isEmpty(),
-            check('role', 'No es un rol permitido').isIn(['ADMIN_ROLE','USER_ROLE']),
+
+            // VALIDACION SIN BASE DE DATOS
+
+               // check('role', 'No es un rol permitido').isIn(['ADMIN_ROLE','USER_ROLE']),
+
+            // VALIDACION CON BASE DE DATOS
+
+                // check('role').custom(async (rol ='') => {
+                    
+                //     // Buscamso el rol
+                //     const existeRol = await Role.findOne({"role":rol});
+
+                //     // Si no existe enviamos error
+                //     if(!existeRol){
+                //         throw new Error(`El rol ${rol} no esta registrado en la BD`);
+                //     }
+                // }),
+
+                check('role').custom(esRolvalido),
             
             // Middlware personalizado
             validarCampos,
 
         ], usuarioPost)
 
-        router.put('/:id', usuarioPut)
+        router.put('/:id', 
+                check('id', 'No es un ID Valido').isMongoId(),
+                check('id').custom(existeUsuarioporID),
+                
+                check('role').custom(esRolvalido),
+                // Middlware personalizado
+                validarCampos,
+        usuarioPut)
 
         router.patch('/', usuarioPath)
 
-        router.delete('/', usuarioDelete)
+        router.delete('/:id',[
+            check('id', 'No es un ID Valido').isMongoId(),
+            check('id').custom(existeUsuarioporID),
+            validarCampos
+        ], usuarioDelete)
    
 
 // Exportamos las rutas

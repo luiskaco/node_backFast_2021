@@ -39,7 +39,7 @@ https://mongoosejs.com/docs/index.html
 
 `- npm i bcryptjs -`
 
-##### express-validator - Paquete para las validaciones
+##### express-validator - Paquete para las validaciones de rutas
 
 `- npm i express-validator -`
 

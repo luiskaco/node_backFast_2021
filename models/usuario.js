@@ -32,6 +32,19 @@ const UsuarioSchema = Schema({
     },
 });
 
+/// editando metodo
+
+UsuarioSchema.methods.toJSON = function(){
+    // Extraemos lo que no vamos a usar
+    const {__v, password, ...usuario} = this.toObject();
+
+    // Retornamos el usuario
+    return usuario;
+
+}
+
+
+
 module.exports = model('Usuario', UsuarioSchema); 
 
 // Se configura en singlugar el nombre de la conexion
