@@ -36,7 +36,11 @@ const UsuarioSchema = Schema({
 
 UsuarioSchema.methods.toJSON = function(){
     // Extraemos lo que no vamos a usar
-    const {__v, password, ...usuario} = this.toObject();
+    const {__v, password, _id,  ...usuario} = this.toObject();
+
+
+    // Transforamos el id por uid
+    usuario.uid = _id
 
     // Retornamos el usuario
     return usuario;

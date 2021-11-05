@@ -46,12 +46,17 @@ https://mongoosejs.com/docs/index.html
 
 `- npm i express-validator -`
 
+##### JSONWEB TOKEN - Paquete para generar token
+
+`- npm i jsonwebtoken -`
+
+https://www.npmjs.com/package/jsonwebtoken
 
 ### HEROKU COMAND
 
-heroku --version
+`- heroku --version -`
 
-git push heroku main
+`- git push heroku main -`
 
 
 

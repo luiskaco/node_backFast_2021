@@ -158,12 +158,15 @@ const usuarioDelete = async (req, res = response) => {
 
     // Eliminando solo cambiando el usuario
         const usuario = await Usuario.findByIdAndUpdate(id, {estado:false})
-
+        
+        // Extrayendo el uui gaardado en la request
+        const uid = req.uid;
 
     res.status(403).json({
         msg:"Delete Api - Controllador",
         id,
-        usuario
+        usuario,
+        uid
     });
     
 }

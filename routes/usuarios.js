@@ -6,6 +6,11 @@ const {check} = require('express-validator')
 
 // importamos middleware personalizado
 const {validarCampos} = require('../midlewares/validar-campos');
+const {validarJWT} = require('../midlewares/validar-jwt');
+
+    /**
+     * Nota: Los middleware funciona en cascada si uno falla detiene el proceso de los demas
+     **/
 
     // Importando validaciones personalizadas
     const {esRolvalido, emailExiste, existeUsuarioporID} = require('../helpers/db-validators');
@@ -81,6 +86,7 @@ const router = Router();
         router.patch('/', usuarioPath)
 
         router.delete('/:id',[
+            validarJWT,
             check('id', 'No es un ID Valido').isMongoId(),
             check('id').custom(existeUsuarioporID),
             validarCampos

@@ -1,0 +1,27 @@
+// JSON WEB TOKEN
+
+Token se divide en 3 partes
+
+1 - HEADER - Informacion del algoritmo y el tipo de token
+2 - PAYLOAD - Contiene la informacion que queremos
+3 - FIRMA - Ayuda a verificadores identifcar el token
+
+Nota: Siempre recordar. Se usa para manejar volumen de usuiarios
+
+NOta: las session se usan para pocas cantidades de usuarios que esten entre lo 5 mil y 10 mil usuarios.
+
+
+Ejmplo para leer token : https://gist.github.com/Klerith/44ee5349fa13699d9c5f1e82b3be040e
+
+Para ver el token mas visual: https://jwt.io/
+
+Nota: Los token son encriptado de doble via, se recomienda no guardar informacion sensible
+
+Ver video: 139
+
+------------------ CACHE se le conoce como local Storage
+
+Local Storage - Se mantiene a pesar de cerrar el navegador | Es informacion persistente.
+  
+Session Storage - Se elimna al cerrar el navegador | Es informacion persistente
+
