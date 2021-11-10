@@ -155,18 +155,16 @@ const usuarioDelete = async (req, res = response) => {
     // Borrar ficsicamente
     // const usuario = await Usuario.findByIdAndDelete(id); 
 
-
     // Eliminando solo cambiando el usuario
         const usuario = await Usuario.findByIdAndUpdate(id, {estado:false})
         
         // Extrayendo el uui gaardado en la request
-        const uid = req.uid;
+        const usuarioAutenticado = req.usuario;
 
     res.status(403).json({
         msg:"Delete Api - Controllador",
-        id,
         usuario,
-        uid
+        usuarioAutenticado
     });
     
 }
