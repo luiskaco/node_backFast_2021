@@ -11,7 +11,7 @@ const generarJWT = ( uid = '') => {  // uid = identificador unico de usuario
         const payload = {uid};
         
         // Firmamos el token
-        jwt.sign(payload, process.env.SECRETORPRIVATEKEY,{ expiresIn: '4h' }, //parseInt(process.env.TTL)
+        jwt.sign(payload, process.env.SECRETORPRIVATEKEY,{ expiresIn: parseInt(process.env.TTL) }, //'4h'  parseInt(process.env.TTL)
                 // Definimos el callback
          (err, token) => {
 
