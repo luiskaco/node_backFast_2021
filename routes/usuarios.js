@@ -5,9 +5,15 @@ const {Router} = require('express');
 const {check} = require('express-validator')
 
 // importamos middleware personalizado
-const {validarCampos} = require('../midlewares/validar-campos');
-const {validarJWT} = require('../midlewares/validar-jwt');
-const {esAdminRole, tieneRole} = require('../midlewares/validar-roles');
+    // const {validarCampos} = require('../midlewares/validar-campos');
+    // const {validarJWT} = require('../midlewares/validar-jwt');
+    // const {esAdminRole, tieneRole} = require('../midlewares/validar-roles');
+
+    const {
+        validarCampos, 
+        validarJWT,
+        esAdminRole, 
+        tieneRole } = require('../midlewares');
 
     /**
      * Nota: Los middleware funciona en cascada si uno falla detiene el proceso de los demas
@@ -88,8 +94,11 @@ const router = Router();
 
         router.delete('/:id',[
             validarJWT,
-            // esAdminRole,  
+            esAdminRole,  
+            
+            // NOTA; PSAMOS UNA FUNCION Y NOS DEVUELVE UNA FUNCION DE EXPRESS
             tieneRole('ADMIN_ROLE', 'VENTAS_ROLE', 'OTRO_ROLE'),
+            
             check('id', 'No es un ID Valido').isMongoId(),
             check('id').custom(existeUsuarioporID),
             validarCampos
