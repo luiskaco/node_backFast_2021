@@ -24,7 +24,6 @@ const validarJWT = async (req = request, res = response, next) => {
         // Verifica rel JSON WEB
         // const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
          // console.log(payload)
-
         const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
         // console.log(uid)
 

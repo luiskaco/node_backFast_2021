@@ -1,14 +1,5 @@
 # NODE INICIAL PARA SERVER CON EXPRESS
 
-##### Utilidades Git
-```git checkout --.```
-
-``` git tag -a v.1.0.0 -m "Listo para usar"  ```
-
-``` git push --tags  ```
-
-``` git branch  - Revisando rama ```
-
 ### DEPENDECIAS USADAS
 
 ##### Paqute express
@@ -51,11 +42,45 @@ https://mongoosejs.com/docs/index.html
 
 https://www.npmjs.com/package/jsonwebtoken
 
-### HEROKU COMAND
+
+#UTILIDADES
+
+##### Utilidades Git
+```git checkout --.```
+
+``` git tag -a v.1.0.0 -m "Listo para usar"  ```
+
+``` git push --tags  ```
+
+``` git branch  - Revisando rama ```
+
+#### HEROKU COMAND
 
 `- heroku --version -`
 
 `- git push heroku main -`
+
+###### Revisar los logs
+
+`- heroku logs -n 100  -`
+
+###### Mantener activo
+
+`- heroku logs -n 100  --tail -`
+
+
+## GOOGLE IDENTITY
+
+Enlace: https://developers.google.com/identity/gsi/web/guides/overview
+
+
+
+
+
+
+
+
+
 
 
 

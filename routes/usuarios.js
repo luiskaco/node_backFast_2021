@@ -94,6 +94,7 @@ const router = Router();
 
         router.delete('/:id',[
             validarJWT,
+           
             esAdminRole,  
             
             // NOTA; PSAMOS UNA FUNCION Y NOS DEVUELVE UNA FUNCION DE EXPRESS

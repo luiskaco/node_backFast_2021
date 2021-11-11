@@ -19,7 +19,7 @@ const generarJWT = ( uid = '') => {  // uid = identificador unico de usuario
                 console.log(err)
                 reject('No se pudo generar el token')
             }else{
-                console.log(token);
+              //  console.log(token);
                 resolve(token)
 
             }    

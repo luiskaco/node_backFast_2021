@@ -11,7 +11,7 @@ const { check } = require('express-validator');
 const {validarCampos} = require('../midlewares/validar-campos');
 
 // importamos controlador
-const {login} = require('../controllers/authControllers');
+const {login, googleSingIn} = require('../controllers/authControllers');
 
 
 // Definimos ls rutas
@@ -22,6 +22,14 @@ router.post('/login',[
     // Midlearare
     validarCampos
 ], login )
+
+
+router.post('/google',[
+    check('token_id', 'Token de google es necesario').not().isEmpty(),
+    
+    // Midlearare
+    validarCampos
+], googleSingIn )
 
 
 module.exports = router;

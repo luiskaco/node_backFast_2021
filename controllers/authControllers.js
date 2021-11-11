@@ -70,7 +70,19 @@ const login = async (req, res = response) => {
 
 
 }
+
+    // Nota: igualamos el res = response, solo para que VScode nos ayude con el tipeado
+const googleSingIn = async (req, res = response) => {
+    const { token_id } = req.body;
+
+
+   res.json({
+       msg: 'Todo Bien',
+       token_id
+   })
+}
  
 module.exports = {
-    login
+    login,
+    googleSingIn,
 }
