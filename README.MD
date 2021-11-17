@@ -72,6 +72,24 @@ https://www.npmjs.com/package/jsonwebtoken
 ## GOOGLE IDENTITY
 
 Enlace: https://developers.google.com/identity/gsi/web/guides/overview
+Video 155
+
+
+#### PASO 1 - Mostrar el administrador
+
+https://developers.google.com/identity/gsi/web/guides/display-browsers-native-credential-manager
+
+#### PASO 2 - Manejo de Respuesta
+
+https://developers.google.com/identity/gsi/web/guides/handle-credential-responses-js-functions
+
+#### PASO 3 - Verificar Token
+
+https://developers.google.com/identity/gsi/web/guides/verify-google-id-token
+
+###### Instalar dependencia de funcionamiento
+
+`- npm install google-auth-library --save -`
 
 
 
