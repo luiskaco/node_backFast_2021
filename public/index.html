@@ -29,6 +29,11 @@
         data-logo_alignment="left">
     </div>
 
+
+    <button id="google_signout">
+        Sign-out
+    </button>
+
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <script>
@@ -51,6 +56,9 @@
                 .then(resp => resp.json())
                 .then( resp => {
                     console.log(resp)
+
+                    // Almancenar en local storage el correo del logueado
+                    localStorage.setItem('email', resp.usuario.correo)
                 })
                 .catch((res) => { console.log(res) })
             
@@ -59,6 +67,31 @@
                  */
 
         }
+
+
+        const button = document.getElementById('google_signout');
+
+        // button.addEventListener('click', () => {
+        //     alert("hola");
+        // });
+
+        button.onclick = () => {
+            console.log(google.accounts.id)
+            google.accounts.id.disableAutoSelect() // Es importante
+
+            // llamamos el cierre de google con el local storae almacenado
+                
+
+            google.accounts.id.revoke(localStorage.getItem('email'), done => {
+                // Para borrar las variables almacenadas
+                localStorage.clear();
+                // Para recargar la pagina y vaciar cualquier cosas que haya en el estado de la aplicacion
+                // localStorage.reload();    
+                console.log('consent revoked');
+            });
+        };
+
+
       </script>
 </body>
 </html>

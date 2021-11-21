@@ -87,23 +87,22 @@ const googleSingIn = async (req, res = response) => {
         // verificar si ya existe el usuario
         let usuario = await Usuario.findOne({correo});
 
+
             if (! usuario ){
                 // Crear usuario
                 const data = {
                     nombre, 
                     correo,
                     password: 'ghjklkjhgesdrtyujiklñ',
-                    google:true
+                    google:true,
+                    role:"USER_ROLE"
                 };
 
+                //Creamos la instania del usuaio
                 usuario = new Usuario(data);
-                await usuario.save();
 
-                res.json({
-                    msg: 'Todo Bien Google Singnins',
-              
-                    usuario
-                })
+                // Guardamos el usuario
+                await usuario.save();
 
             }
 
@@ -124,6 +123,7 @@ const googleSingIn = async (req, res = response) => {
                 res.json({
                     msg: 'Todo Bien Google Singnins',
                     token,
+                    usuario
                  
                 })
 
