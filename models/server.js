@@ -14,10 +14,18 @@ class Server {
         // puerto
         this.port = process.env.PORT;
 
-        // mapa de ruta
-        this.usuariosPath = '/api/usuarios';  // Rutas para usuarios
+        // mapa de ruta - Forma 1
+        // this.usuariosPath = '/api/usuarios';  // Rutas para usuarios
 
-            this.authPath = '/api/auth';  // Rutas para autenticacion
+        //     this.authPath = '/api/auth';  // Rutas para autenticacion
+
+        // Forma 2 - Creando u objeto de ruta
+        this.paths = {
+            auth: '/api/auth',
+            categorias: '/api/categorias',
+            usuarios: '/api/usuarios'     
+        }
+          
 
         // Conectar a BD
         this.conectarDB();
@@ -55,9 +63,13 @@ class Server {
     // metodo
     route() {
         // usando un middlerea para el llmado de rutas
-        this.app.use(this.authPath , require('../routes/auth'))
-
-        this.app.use(this.usuariosPath , require('../routes/usuarios'))
+        // this.app.use(this.authPath , require('../routes/auth'))
+        // this.app.use(this.usuariosPath , require('../routes/usuarios'))
+       
+        // usando un middlerea para el llmado de rutas
+        this.app.use(this.paths.auth , require('../routes/auth'))
+        this.app.use(this.paths.categorias , require('../routes/categoria'))
+        this.app.use(this.paths.usuarios , require('../routes/usuarios'))
     }
 
     listen(){

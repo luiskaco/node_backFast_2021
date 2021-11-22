@@ -92,6 +92,12 @@ https://developers.google.com/identity/gsi/web/guides/verify-google-id-token
 `- npm install google-auth-library --save -`
 
 
+### POSTMAN API
+
+`- https://documenter.getpostman.com/view/9986583/UVJWqKvw -`
+
+
+
 
 
 
