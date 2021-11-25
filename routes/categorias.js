@@ -19,8 +19,8 @@ const {
  // importamos middleware personalizado
 const {validarJWT,  validarCampos, esAdminRole} = require('../midlewares');
 
-// importando validador de exitencia de categoria
-const {isCategoria} = require('../helpers/isCategoria')
+// Importando validaciones personalizadas
+const {isCategoria} = require('../helpers/db-validators');
 
 
 /**

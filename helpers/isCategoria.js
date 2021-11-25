@@ -8,7 +8,6 @@ const { Categoria } = require("../models");
  */
 const isCategoria = async (id) => {
 
-
     // Consultar bd por el ID
     const existeCategoria = await Categoria.findById(id);
 
@@ -17,8 +16,6 @@ const isCategoria = async (id) => {
         throw new Error(`La categoria ${id} no esta registrado en la BD`);
     }
     
-
-
 }
 
 module.exports = {

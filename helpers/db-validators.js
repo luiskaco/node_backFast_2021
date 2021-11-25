@@ -2,8 +2,10 @@
 // Importando el modelo rol
 const Role = require('../models/role');
 
-// Importando el modelo usuario
-const {Usuario} = require('../models');
+// Importando el modelos
+const {Usuario, Producto, Categoria} = require('../models');
+
+
 
 
 // Validando email
@@ -40,8 +42,43 @@ const existeUsuarioporID =  async (id) => {
 }
 
 
+/**
+ *  Validadores de categoria
+ */
+ const isCategoria = async (id) => {
+
+    // Consultar bd por el ID
+    const existeCategoria = await Categoria.findById(id);
+
+    //to do: Validar existencia
+    if( !existeCategoria ){
+        throw new Error(`La categoria ${id} no esta registrado en la BD`);
+    }
+    
+}
+
+
+/**
+ *  Validadores de Producto
+ */
+ const isProducto = async (id) => {
+ 
+    
+    // Consultar bd por el ID
+    const existeProducto = await Producto.findById(id);
+
+    //to do: Validar existencia
+    if( !existeProducto ){
+        throw new Error(`el producto ${id} no esta registrado en la BD`);
+    }
+    
+}
+
+
 module.exports = {
     esRolvalido,
     emailExiste,
-    existeUsuarioporID
+    existeUsuarioporID,
+    isCategoria,
+    isProducto
 };

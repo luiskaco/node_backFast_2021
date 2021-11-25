@@ -93,6 +93,7 @@ const obtenerCategoriaP = async (req, res = response) => {
  
 
 }
+
 // Actualizar categoria
 const actualizarCategoria = async (req, res = response) => {
     // Extramos id
