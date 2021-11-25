@@ -18,4 +18,15 @@ const CategoriaSchema = Schema({
     }
 });
 
+/// editando metodo
+
+CategoriaSchema.methods.toJSON = function(){
+    // Extraemos lo que no vamos a usar
+    const {__v,  estado, ...data} = this.toObject();
+
+    // Retornamos la categoria
+    return data;
+
+}
+
 module.exports = model('Categoria', CategoriaSchema);

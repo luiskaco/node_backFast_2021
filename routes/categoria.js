@@ -8,10 +8,19 @@ const {Router, response} = require('express');
 const { check } = require('express-validator');
 
 // Importanmos controlador
-const { crearCategoria } = require('../controllers/CategoriaControllers');
+const { 
+    crearCategoria , 
+    obtenerCategoria, 
+    obtenerCategoriaP, 
+    actualizarCategoria,
+    eliminarCategoria
+} = require('../controllers/CategoriaControllers');
 
  // importamos middleware personalizado
-const {validarJWT,  validarCampos} = require('../midlewares');
+const {validarJWT,  validarCampos, esAdminRole} = require('../midlewares');
+
+// importando validador de exitencia de categoria
+const {isCategoria} = require('../helpers/isCategoria')
 
 
 /**
@@ -23,31 +32,52 @@ const {validarJWT,  validarCampos} = require('../midlewares');
 //  })
 
 // Obtener todas las categorias - Publico
-router.get('/', (req, res) => {
-   res.json("get");
-})
+router.get('/', obtenerCategoria)
 
 // Obtener una categoria por ID - publico
-router.get('/:id', (req, res) => {
-    res.json("get - id");
- })
+router.get('/:id',[
+    check('id', 'No es un id de mongo valido').isMongoId(),
+    // check('id').custom(isCategoria),
+
+    // Mensaje del check
+   validarCampos
+], obtenerCategoriaP )
 
  // Crear categoria - privado - Ciualquier persona con un token valido
  router.post('/', [
      validarJWT,
      check('nombre', 'El nombre no puede quedar vacio').not().isEmpty(),
+
+     // Mensaje del check
      validarCampos
 ] , crearCategoria)
  
  // Actualizar un registro - privado - Ciualquier persona con un token valido
- router.put('/:id', (req, res) => {
-    res.json("put");
- })
+ router.put('/:id',
+    [   
+        validarJWT,
+        check('nombre', 'El nombre no puede quedar vacio').not().isEmpty(),
+        check('id', 'No es un id de mongo valido').isMongoId(),
+        check('id').custom(isCategoria),
+
+        // Mensaje del check
+        validarCampos
+    ], actualizarCategoria)
 
 // Borrar una categoria - Admin
- router.delete('/:id', (req, res) => {
-    res.json("delete");
- })
+ router.delete('/:id', 
+ [     
+      validarJWT, 
+      esAdminRole,
+      check('id', 'No es un id de mongo valido').isMongoId(),
+      validarCampos,
+
+      check('id').custom(isCategoria),
+
+      // Mensaje del check
+      validarCampos
+],
+ eliminarCategoria)
 
 
 

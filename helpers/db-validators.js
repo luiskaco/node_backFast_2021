@@ -3,7 +3,7 @@
 const Role = require('../models/role');
 
 // Importando el modelo usuario
-const Usuario = require('../models/usuario');
+const {Usuario} = require('../models');
 
 
 // Validando email
