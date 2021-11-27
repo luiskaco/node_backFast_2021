@@ -42,6 +42,20 @@ https://mongoosejs.com/docs/index.html
 
 https://www.npmjs.com/package/jsonwebtoken
 
+##### express-fileupload - Paquete para carga de archivos
+
+`- npm i express-fileupload -`
+
+https://www.npmjs.com/package/express-fileupload
+
+EJemplo: https://github.com/richardgirges/express-fileupload/blob/master/example/server.js
+
+##### uuid - Paquete para generar id unicos aleatorios
+
+`- npm i uuid -`
+
+https://www.npmjs.com/package/uuid
+
 
 #UTILIDADES
 

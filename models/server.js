@@ -5,6 +5,9 @@ const express = require('express')
 const cors = require('cors');
 const { dbCnnnection } = require('../database/config.db');
 
+// Importando paquete de file upload
+const fileUpload = require('express-fileupload');
+
 // Creando clase de server
 class Server {
 
@@ -25,7 +28,8 @@ class Server {
             buscar: '/api/buscar',
             categorias: '/api/categorias',
             usuarios: '/api/usuarios',
-            productos: '/api/productos'    
+            productos: '/api/productos',    
+            uploads: '/api/uploads'    
         }
           
         // Conectar a BD
@@ -58,6 +62,17 @@ class Server {
 
         // Directorio publico
         this.app.use( express.static('public'))
+
+
+        // NPara manejar la carga de archivos
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/'
+        }));
+
+        /**
+         * Nota: se necesita para aceptar ppetiionces  via rest
+         */
     }
 
 
@@ -73,6 +88,7 @@ class Server {
         this.app.use(this.paths.productos , require('../routes/productos'))
         this.app.use(this.paths.categorias , require('../routes/categorias'))
         this.app.use(this.paths.usuarios , require('../routes/usuarios'))
+        this.app.use(this.paths.uploads , require('../routes/upload'))
 
         
     

@@ -149,13 +149,9 @@ const buscarProductoCategoria  = async (req, res = response) => {
              regex = RegExp(termino, 'i')
         } 
         
-
-       
-
         const listaProductos = await Producto.find({categoria: regex ,estado:true})
                                             .populate('usuario', 'nombre')
                                             .populate('categoria', 'nombre')
-
         res.json({
             msg: `llegaste`,
             listaProductos
