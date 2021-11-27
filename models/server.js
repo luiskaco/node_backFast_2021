@@ -22,6 +22,7 @@ class Server {
         // Forma 2 - Creando u objeto de ruta
         this.paths = {
             auth: '/api/auth',
+            buscar: '/api/buscar',
             categorias: '/api/categorias',
             usuarios: '/api/usuarios',
             productos: '/api/productos'    
@@ -68,6 +69,7 @@ class Server {
        
         // usando un middlerea para el llmado de rutas
         this.app.use(this.paths.auth , require('../routes/auth'))
+        this.app.use(this.paths.buscar , require('../routes/buscar'))
         this.app.use(this.paths.productos , require('../routes/productos'))
         this.app.use(this.paths.categorias , require('../routes/categorias'))
         this.app.use(this.paths.usuarios , require('../routes/usuarios'))
