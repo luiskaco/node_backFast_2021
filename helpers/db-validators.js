@@ -4,6 +4,7 @@ const Role = require('../models/role');
 
 // Importando el modelos
 const {Usuario, Producto, Categoria} = require('../models');
+const { collection } = require('../models/role');
 
 
 
@@ -75,10 +76,31 @@ const existeUsuarioporID =  async (id) => {
 }
 
 
+/**
+ *  Validar las colecciones permitidas
+ */
+
+const coleccionesPermitidas = async(coleccion = '', colecciones = []) => {
+
+    //  
+    const incluida = colecciones.includes(coleccion)
+
+    // Verificamos que exista
+    if( !incluida ) {
+        throw new Error(`La coleccion ${coleccion} no es permitida, estas son las colecciones: ${colecciones}`)
+    }
+
+    return true;
+
+}
+
+
 module.exports = {
     esRolvalido,
     emailExiste,
     existeUsuarioporID,
     isCategoria,
-    isProducto
+    isProducto,
+    coleccionesPermitidas
+
 };

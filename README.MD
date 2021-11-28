@@ -112,7 +112,13 @@ https://developers.google.com/identity/gsi/web/guides/verify-google-id-token
 
 
 
+### cloudinary - PARA CARGA DE IAMGEN  
 
+    Pagina oficila
+    `- npm install google-auth-library --save -`
+
+    Repositorio
+    `- https://www.npmjs.com/package/cloudinary -`
 
 
 

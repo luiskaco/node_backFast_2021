@@ -67,7 +67,10 @@ class Server {
         // NPara manejar la carga de archivos
         this.app.use(fileUpload({
             useTempFiles : true,
-            tempFileDir : '/tmp/'
+            tempFileDir : '/tmp/',
+            createParentPath: true // Permite crear carpeta si no existe.
+
+            //Nota: Es importante tener cuidado con esa activacion
         }));
 
         /**
